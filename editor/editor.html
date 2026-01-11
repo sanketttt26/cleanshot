@@ -77,6 +77,50 @@
                             style="background: linear-gradient(135deg, #2193b0, #6dd5ed)"></button>
                         <button class="preset-btn" data-gradient="royal"
                             style="background: linear-gradient(135deg, #141e30, #243b55)"></button>
+                        <button class="preset-btn custom-gradient-btn" id="custom-gradient-btn" title="Custom Gradient">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 20h9" />
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Gradient Editor -->
+                <div class="control-group hidden" id="custom-gradient-editor">
+                    <label class="control-label">Custom Gradient</label>
+
+                    <div class="gradient-slider-container">
+                        <div class="gradient-slider-track" id="gradient-track"></div>
+                    </div>
+
+                    <div class="custom-controls-grid">
+                        <div class="control-item">
+                            <label>Color</label>
+                            <div class="color-picker-row small">
+                                <input type="color" id="stop-color" class="color-input">
+                                <input type="text" id="stop-color-hex" class="hex-input">
+                            </div>
+                        </div>
+
+                        <div class="control-item">
+                            <label>Pos %</label>
+                            <input type="number" id="stop-position" min="0" max="100" class="number-input">
+                        </div>
+
+                        <div class="control-item">
+                            <label>Angle</label>
+                            <input type="number" id="gradient-angle" min="0" max="360" value="135" class="number-input">
+                        </div>
+
+                        <div class="control-item">
+                            <label>Type</label>
+                            <select id="gradient-type" class="select-input">
+                                <option value="linear">Linear</option>
+                                <option value="radial">Radial</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
 

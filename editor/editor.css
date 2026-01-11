@@ -474,3 +474,101 @@ body {
         transform: translateY(0);
     }
 }
+
+/* Custom Gradient Editor */
+#custom-gradient-editor {
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    padding: 16px;
+    margin-top: 12px;
+    border: 1px solid var(--border);
+}
+
+.gradient-slider-container {
+    height: 32px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 0 10px;
+}
+
+.gradient-slider-track {
+    width: 100%;
+    height: 12px;
+    border-radius: 6px;
+    position: relative;
+    background: linear-gradient(to right, #fff, #000);
+    /* Default fallback */
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+}
+
+.gradient-handle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: grab;
+    z-index: 10;
+    transition: transform 0.1s;
+}
+
+.gradient-handle:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.gradient-handle.active {
+    border-color: var(--text-primary);
+    box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--text-primary);
+    z-index: 20;
+}
+
+.custom-controls-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.control-item label {
+    display: block;
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.number-input,
+.select-input {
+    width: 100%;
+    padding: 8px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-family: var(--font-mono);
+    font-size: 12px;
+}
+
+.number-input:focus,
+.select-input:focus {
+    outline: none;
+    border-color: var(--text-primary);
+}
+
+.color-picker-row.small {
+    gap: 6px;
+}
+
+.color-picker-row.small .color-input {
+    width: 32px;
+    height: 32px;
+}
+
+.color-picker-row.small .hex-input {
+    padding: 6px 8px;
+    font-size: 12px;
+}
