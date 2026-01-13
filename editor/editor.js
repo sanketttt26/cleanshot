@@ -269,6 +269,27 @@ function setupEventListeners() {
   // Export
   elements.copyClipboard.addEventListener('click', copyToClipboard);
   elements.downloadBtn.addEventListener('click', downloadImage);
+
+  // Number spinner buttons
+  document.querySelectorAll('.spinner-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = btn.dataset.target;
+      const step = parseInt(btn.dataset.step) || 1;
+      const input = document.getElementById(targetId);
+      
+      if (input) {
+        const currentValue = parseInt(input.value) || 0;
+        const min = parseInt(input.min) || 0;
+        const max = parseInt(input.max) || 100;
+        const newValue = Math.max(min, Math.min(max, currentValue + step));
+        
+        input.value = newValue;
+        input.dispatchEvent(new Event('input', { bubbles: true }));
+        input.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    });
+  });
 }
 
 async function renderPreview() {
@@ -289,8 +310,9 @@ async function renderPreview() {
       ...state.settings,
       gradientColors: gradientColors,
       cropBounds: state.cropBounds,
-      // Pass custom angle if active
-      angle: state.settings.gradient === 'custom' ? state.settings.customGradient.angle : 135
+      // Pass custom angle and type if active
+      angle: state.settings.gradient === 'custom' ? state.settings.customGradient.angle : 135,
+      gradientType: state.settings.gradient === 'custom' ? state.settings.customGradient.type : 'linear'
     });
 
     if (result) {
@@ -417,7 +439,14 @@ class CustomGradientManager {
     });
     
     elements.gradientAngle.addEventListener('input', (e) => {
-      state.settings.customGradient.angle = parseInt(e.target.value) || 0;
+      const angle = parseInt(e.target.value) || 0;
+      state.settings.customGradient.angle = angle;
+      renderPreview();
+    });
+    
+    elements.gradientAngle.addEventListener('change', (e) => {
+      const angle = parseInt(e.target.value) || 0;
+      state.settings.customGradient.angle = angle;
       saveSettings();
       renderPreview();
     });

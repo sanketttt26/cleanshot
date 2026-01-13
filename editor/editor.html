@@ -106,12 +106,40 @@
 
                         <div class="control-item">
                             <label>Pos %</label>
-                            <input type="number" id="stop-position" min="0" max="100" class="number-input">
+                            <div class="number-input-wrapper">
+                                <input type="number" id="stop-position" min="0" max="100" class="number-input">
+                                <div class="number-spinner">
+                                    <button type="button" class="spinner-btn spinner-up" data-target="stop-position" data-step="1">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="18 15 12 9 6 15"></polyline>
+                                        </svg>
+                                    </button>
+                                    <button type="button" class="spinner-btn spinner-down" data-target="stop-position" data-step="-1">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="control-item">
                             <label>Angle</label>
-                            <input type="number" id="gradient-angle" min="0" max="360" value="135" class="number-input">
+                            <div class="number-input-wrapper">
+                                <input type="number" id="gradient-angle" min="0" max="360" value="135" class="number-input">
+                                <div class="number-spinner">
+                                    <button type="button" class="spinner-btn spinner-up" data-target="gradient-angle" data-step="1">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="18 15 12 9 6 15"></polyline>
+                                        </svg>
+                                    </button>
+                                    <button type="button" class="spinner-btn spinner-down" data-target="gradient-angle" data-step="-1">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <polyline points="6 9 12 15 18 9"></polyline>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="control-item">

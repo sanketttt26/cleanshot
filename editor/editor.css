@@ -229,6 +229,7 @@ body {
     width: 100%;
     height: 6px;
     -webkit-appearance: none;
+    appearance: none;
     background: var(--bg-tertiary);
     border-radius: 3px;
     cursor: pointer;
@@ -403,6 +404,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
 }
 
 #preview-canvas {
@@ -411,6 +417,11 @@ body {
     border-radius: 8px;
     box-shadow: var(--shadow);
     display: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
 }
 
 #preview-canvas.visible {
@@ -533,12 +544,23 @@ body {
     gap: 12px;
 }
 
+.control-item {
+    min-width: 0;
+    overflow: hidden;
+}
+
 .control-item label {
     display: block;
     font-size: 11px;
     color: var(--text-muted);
     margin-bottom: 6px;
     font-weight: 500;
+}
+
+.number-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .number-input,
@@ -553,22 +575,82 @@ body {
     font-size: 12px;
 }
 
+.number-input-wrapper .number-input {
+    padding-right: 32px;
+}
+
 .number-input:focus,
 .select-input:focus {
     outline: none;
     border-color: var(--text-primary);
 }
 
+/* Hide default number input spinners */
+.number-input::-webkit-outer-spin-button,
+.number-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.number-input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.number-spinner {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.spinner-btn {
+    width: 20px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    padding: 0;
+    transition: color 0.2s ease;
+    border-radius: 3px;
+}
+
+.spinner-btn:hover {
+    color: var(--text-primary);
+    background: var(--bg-hover);
+}
+
+.spinner-btn:active {
+    background: var(--bg-tertiary);
+}
+
+.spinner-btn svg {
+    width: 10px;
+    height: 10px;
+}
+
 .color-picker-row.small {
     gap: 6px;
+    min-width: 0;
 }
 
 .color-picker-row.small .color-input {
     width: 32px;
     height: 32px;
+    flex-shrink: 0;
 }
 
 .color-picker-row.small .hex-input {
     padding: 6px 8px;
     font-size: 12px;
+    min-width: 0;
+    overflow: hidden;
 }
