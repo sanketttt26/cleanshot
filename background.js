@@ -1,5 +1,5 @@
 /**
- * Framy - Screenshot Background Extension
+ * CleanShot - Screenshot Background Extension
  * Background Service Worker
  * Handles screenshot capture, context menus, and keyboard shortcuts
  */
@@ -7,14 +7,14 @@
 // Create context menu on extension install
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
-    id: 'framy-capture',
-    title: 'Framy Screenshot',
+    id: 'cleanshot-capture',
+    title: 'CleanShot Screenshot',
     contexts: ['page', 'selection', 'image']
   });
 
   chrome.contextMenus.create({
     id: 'capture-visible',
-    parentId: 'framy-capture',
+    parentId: 'cleanshot-capture',
     title: 'Capture Visible Tab',
     contexts: ['page', 'selection', 'image']
   });
@@ -23,12 +23,12 @@ chrome.runtime.onInstalled.addListener(() => {
 
   chrome.contextMenus.create({
     id: 'capture-area',
-    parentId: 'framy-capture',
+    parentId: 'cleanshot-capture',
     title: 'Select Area',
     contexts: ['page', 'selection', 'image']
   });
 
-  console.log('Framy: Context menus created');
+  console.log('CleanShot: Context menus created');
 });
 
 // Handle context menu clicks
@@ -107,7 +107,7 @@ async function handleCaptureRequest(type, tab) {
       openEditorTab();
     }
   } catch (error) {
-    console.error('Framy: Capture error:', error);
+    console.error('CleanShot: Capture error:', error);
   }
 }
 
@@ -153,4 +153,4 @@ async function captureSelectedArea(bounds, tab) {
   return { dataUrl, bounds, requiresCrop: true };
 }
 
-console.log('Framy: Background service worker loaded');
+console.log('CleanShot: Background service worker loaded');

@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Framy - Screenshot Background",
+  "name": "CleanShot - Screenshot Background",
   "version": "1.0.0",
   "description": "Capture screenshots and add beautiful backgrounds with one click. Perfect for social media, blogs, and documentation.",
   "icons": {
@@ -15,7 +15,7 @@
       "48": "icons/icon48.png",
       "128": "icons/icon128.png"
     },
-    "default_title": "Framy - Capture Screenshot"
+    "default_title": "CleanShot - Capture Screenshot"
   },
   "permissions": [
     "activeTab",

@@ -1,5 +1,5 @@
 /**
- * Framy - Screenshot Background Extension
+ * CleanShot - Screenshot Background Extension
  * Popup Styles
  * Modern, minimal UI with black and white theme
  */
@@ -26,7 +26,7 @@
   --glass-border: rgba(255, 255, 255, 0.08);
 
   /* Typography */
-  --font-display: 'Space Grotesk', sans-serif;
+  --font-display: 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 

@@ -1,5 +1,5 @@
 /**
- * Framy Editor Script
+ * CleanShot Editor Script
  * Full-page editor for screenshot customization
  */
 
@@ -110,10 +110,10 @@ function cacheElements() {
 
 async function loadSettings() {
   try {
-    const result = await chrome.storage.local.get(['framySettings']);
-    if (result.framySettings) {
+    const result = await chrome.storage.local.get(['cleanShotSettings']);
+    if (result.cleanShotSettings) {
       // Merge saved settings with default state, preserving nested customGradient
-      const saved = result.framySettings;
+      const saved = result.cleanShotSettings;
       state.settings = { 
         ...state.settings, 
         ...saved,
@@ -131,7 +131,7 @@ async function loadSettings() {
 
 async function saveSettings() {
   try {
-    await chrome.storage.local.set({ framySettings: state.settings });
+    await chrome.storage.local.set({ cleanShotSettings: state.settings });
   } catch (error) {
     console.error('Error saving settings:', error);
   }
@@ -395,7 +395,7 @@ function downloadImage() {
     const mimeType = format === 'jpg' ? 'image/jpeg' : `image/${format}`;
     const quality = format === 'png' ? undefined : 0.92;
     const dataUrl = canvas.toDataURL(mimeType, quality);
-    const filename = `framy-screenshot-${Date.now()}.${format}`;
+    const filename = `cleanshot-screenshot-${Date.now()}.${format}`;
 
     chrome.downloads.download({ url: dataUrl, filename: filename, saveAs: true });
     showToast('Download started!', 'success');

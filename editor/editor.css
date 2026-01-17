@@ -1,5 +1,5 @@
 /**
- * Framy Editor Styles
+ * CleanShot Editor Styles
  * Full-page editor with sidebar for background customization
  */
 
@@ -15,7 +15,7 @@
     --border: rgba(255, 255, 255, 0.08);
     --border-light: rgba(255, 255, 255, 0.15);
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-    --font-display: 'Space Grotesk', sans-serif;
+    --font-display: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -87,7 +87,9 @@ body {
 }
 
 .logo-icon {
-    color: var(--text-primary);
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
 }
 
 .logo-text {

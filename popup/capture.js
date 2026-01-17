@@ -1,5 +1,5 @@
 /**
- * Framy - Capture Popup Script
+ * CleanShot - Capture Popup Script
  * Simple capture interface - opens editor in new tab
  */
 

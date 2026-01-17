@@ -1,5 +1,5 @@
 /**
- * Framy - Screenshot Background Extension
+ * CleanShot - Screenshot Background Extension
  * Popup Main Script
  * Handles UI interactions, preview updates, and exports
  */
@@ -82,16 +82,16 @@ function cacheElements() {
  */
 async function loadSettings() {
   try {
-    const result = await chrome.storage.local.get(['framySettings', 'framyTheme']);
-    if (result.framySettings) {
-      state.settings = { ...state.settings, ...result.framySettings };
+    const result = await chrome.storage.local.get(['cleanShotSettings', 'cleanShotTheme']);
+    if (result.cleanShotSettings) {
+      state.settings = { ...state.settings, ...result.cleanShotSettings };
     }
-    if (result.framyTheme) {
-      state.theme = result.framyTheme;
+    if (result.cleanShotTheme) {
+      state.theme = result.cleanShotTheme;
     }
     applySettingsToUI();
   } catch (error) {
-    console.error('Framy: Error loading settings:', error);
+    console.error('CleanShot: Error loading settings:', error);
   }
 }
 
@@ -101,11 +101,11 @@ async function loadSettings() {
 async function saveSettings() {
   try {
     await chrome.storage.local.set({ 
-      framySettings: state.settings,
-      framyTheme: state.theme
+      cleanShotSettings: state.settings,
+      cleanShotTheme: state.theme
     });
   } catch (error) {
-    console.error('Framy: Error saving settings:', error);
+    console.error('CleanShot: Error saving settings:', error);
   }
 }
 
@@ -179,7 +179,7 @@ async function checkPendingScreenshot() {
       await renderPreview();
     }
   } catch (error) {
-    console.error('Framy: Error checking pending screenshot:', error);
+    console.error('CleanShot: Error checking pending screenshot:', error);
   }
 }
 
@@ -345,7 +345,7 @@ async function captureScreenshot(type) {
       await renderPreview();
     }
   } catch (error) {
-    console.error('Framy: Capture error:', error);
+    console.error('CleanShot: Capture error:', error);
     showToast('Failed to capture screenshot', 'error');
   }
 }
@@ -369,7 +369,7 @@ async function renderPreview() {
       elements.previewPlaceholder.classList.add('hidden');
     }
   } catch (error) {
-    console.error('Framy: Render error:', error);
+    console.error('CleanShot: Render error:', error);
   }
 }
 
@@ -445,7 +445,7 @@ async function copyToClipboard() {
 
     showToast('Copied to clipboard!', 'success');
   } catch (error) {
-    console.error('Framy: Copy error:', error);
+    console.error('CleanShot: Copy error:', error);
     showToast('Failed to copy', 'error');
   }
 }
@@ -466,7 +466,7 @@ function downloadImage() {
     const quality = format === 'png' ? undefined : 0.92;
     
     const dataUrl = canvas.toDataURL(mimeType, quality);
-    const filename = `framy-screenshot-${Date.now()}.${format}`;
+    const filename = `cleanshot-screenshot-${Date.now()}.${format}`;
 
     // Use Chrome downloads API
     chrome.downloads.download({
@@ -477,7 +477,7 @@ function downloadImage() {
 
     showToast('Download started!', 'success');
   } catch (error) {
-    console.error('Framy: Download error:', error);
+    console.error('CleanShot: Download error:', error);
     showToast('Failed to download', 'error');
   }
 }

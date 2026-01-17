@@ -1,5 +1,5 @@
 /**
- * Framy - Screenshot Background Extension
+ * CleanShot - Screenshot Background Extension
  * Content Script
  * Handles area selection overlay for capturing specific regions
  */
@@ -8,8 +8,8 @@
   'use strict';
 
   // Prevent multiple injections
-  if (window.framyInjected) return;
-  window.framyInjected = true;
+  if (window.cleanShotInjected) return;
+  window.cleanShotInjected = true;
 
   let isSelecting = false;
   let selectionOverlay = null;
@@ -35,10 +35,10 @@
 
     // Create overlay
     selectionOverlay = document.createElement('div');
-    selectionOverlay.id = 'framy-selection-overlay';
+    selectionOverlay.id = 'cleanshot-selection-overlay';
     selectionOverlay.innerHTML = `
       <style>
-        #framy-selection-overlay {
+        #cleanshot-selection-overlay {
           position: fixed;
           top: 0;
           left: 0;
@@ -49,14 +49,14 @@
           z-index: 2147483647;
           user-select: none;
         }
-        #framy-selection-box {
+        #cleanshot-selection-box {
           position: absolute;
           border: 2px dashed #fff;
           background: rgba(255, 255, 255, 0.1);
           box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6);
           pointer-events: none;
         }
-        #framy-selection-hint {
+        #cleanshot-selection-hint {
           position: fixed;
           top: 20px;
           left: 50%;
@@ -71,15 +71,15 @@
           letter-spacing: 0.3px;
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
           z-index: 2147483647;
-          animation: framy-fade-in 0.3s ease;
+          animation: cleanshot-fade-in 0.3s ease;
           border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        @keyframes framy-fade-in {
+        @keyframes cleanshot-fade-in {
           from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
           to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
       </style>
-      <div id="framy-selection-hint">
+      <div id="cleanshot-selection-hint">
         Click and drag to select an area &bull; Press ESC to cancel
       </div>
     `;
@@ -106,7 +106,7 @@
 
     // Create selection box
     selectionBox = document.createElement('div');
-    selectionBox.id = 'framy-selection-box';
+    selectionBox.id = 'cleanshot-selection-box';
     selectionBox.style.left = startX + 'px';
     selectionBox.style.top = startY + 'px';
     selectionBox.style.width = '0px';
@@ -179,7 +179,7 @@
           bounds: bounds
         }, (response) => {
           if (chrome.runtime.lastError) {
-            console.error('Framy: Error sending message:', chrome.runtime.lastError);
+            console.error('CleanShot: Error sending message:', chrome.runtime.lastError);
             return;
           }
           if (response && response.dataUrl) {
@@ -224,5 +224,5 @@
     document.removeEventListener('mouseup', onMouseUp);
   }
 
-  console.log('Framy: Content script loaded');
+  console.log('CleanShot: Content script loaded');
 })();

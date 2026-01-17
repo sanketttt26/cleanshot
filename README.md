@@ -1,8 +1,8 @@
-# Framy - Screenshot Background Extension
+# CleanShot - Screenshot Background Extension
 
 A Chrome browser extension that captures screenshots and adds beautiful backgrounds with one click. Perfect for social media, blogs, and documentation.
 
-![Framy Extension](icons/icon128.png)
+![CleanShot Extension](icons/icon128.png)
 
 ## Features
 
@@ -41,15 +41,15 @@ A Chrome browser extension that captures screenshots and adds beautiful backgrou
 
 1. Open Chrome and navigate to `chrome://extensions`
 2. Enable **Developer mode** (toggle in top-right corner)
-3. Click **Load unpacked** and select the `Framy` folder
+3. Click **Load unpacked** and select the `CleanShot` folder
 
 **Keyboard Shortcut:** Alt + Shift + S (quick capture visible tab)
 
-**Context Menu:** Right-click on any page → **Framy Screenshot** → Choose capture type
+**Context Menu:** Right-click on any page → **CleanShot Screenshot** → Choose capture type
 
 ## Usage
 
-1. Click the Framy icon in your browser toolbar
+1. Click the CleanShot icon in your browser toolbar
 2. Choose capture type: **Visible Tab** or **Select Area**
 3. Customize background, padding, corner radius, and shadow
 4. Use the annotation toolbar to draw arrows, lines, circles, or rectangles on your screenshot
