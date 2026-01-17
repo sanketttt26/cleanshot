@@ -28,6 +28,55 @@
             </div>
 
             <!-- Background Controls -->
+
+            <!-- Annotation Toolbar -->
+            <section class="annotation-toolbar">
+                <div class="tool-buttons">
+                    <button class="tool-btn" id="undo-btn" title="Undo (Ctrl+Z)">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M3 7v6h6"></path>
+                            <path d="M21 17a9 9 0 00-9-9 9 9 0 00-6 2.3L3 13"></path>
+                        </svg>
+                    </button>
+                    <button class="tool-btn" id="redo-btn" title="Redo (Ctrl+Y)">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M21 7v6h-6"></path>
+                            <path d="M3 17a9 9 0 019-9 9 9 0 016 2.3L21 13"></path>
+                        </svg>
+                    </button>
+                    <button class="tool-btn" data-tool="arrow" title="Draw Arrow">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="19" x2="19" y2="5"></line>
+                            <polyline points="12 5 19 5 19 12"></polyline>
+                        </svg>
+                    </button>
+                    <button class="tool-btn" data-tool="line" title="Draw Line">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="19" x2="19" y2="5"></line>
+                        </svg>
+                    </button>
+                    <button class="tool-btn" data-tool="circle" title="Draw Circle">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="9"></circle>
+                        </svg>
+                    </button>
+                    <button class="tool-btn" data-tool="rect" title="Draw Rectangle">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <rect x="4" y="4" width="16" height="16" rx="1"></rect>
+                        </svg>
+                    </button>
+                </div>
+                <div class="color-slider-row">
+                    <div class="color-preview" id="annotation-color-preview"></div>
+                    <input type="range" id="annotation-color-slider" class="color-slider" min="0" max="360" value="0">
+                </div>
+            </section>
             <section class="panel">
                 <h3 class="panel-title">Background</h3>
 
@@ -109,13 +158,17 @@
                             <div class="number-input-wrapper">
                                 <input type="number" id="stop-position" min="0" max="100" class="number-input">
                                 <div class="number-spinner">
-                                    <button type="button" class="spinner-btn spinner-up" data-target="stop-position" data-step="1">
-                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <button type="button" class="spinner-btn spinner-up" data-target="stop-position"
+                                        data-step="1">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
                                             <polyline points="18 15 12 9 6 15"></polyline>
                                         </svg>
                                     </button>
-                                    <button type="button" class="spinner-btn spinner-down" data-target="stop-position" data-step="-1">
-                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <button type="button" class="spinner-btn spinner-down" data-target="stop-position"
+                                        data-step="-1">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
                                             <polyline points="6 9 12 15 18 9"></polyline>
                                         </svg>
                                     </button>
@@ -126,15 +179,20 @@
                         <div class="control-item">
                             <label>Angle</label>
                             <div class="number-input-wrapper">
-                                <input type="number" id="gradient-angle" min="0" max="360" value="135" class="number-input">
+                                <input type="number" id="gradient-angle" min="0" max="360" value="135"
+                                    class="number-input">
                                 <div class="number-spinner">
-                                    <button type="button" class="spinner-btn spinner-up" data-target="gradient-angle" data-step="1">
-                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <button type="button" class="spinner-btn spinner-up" data-target="gradient-angle"
+                                        data-step="1">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
                                             <polyline points="18 15 12 9 6 15"></polyline>
                                         </svg>
                                     </button>
-                                    <button type="button" class="spinner-btn spinner-down" data-target="gradient-angle" data-step="-1">
-                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <button type="button" class="spinner-btn spinner-down" data-target="gradient-angle"
+                                        data-step="-1">
+                                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none"
+                                            stroke="currentColor" stroke-width="2">
                                             <polyline points="6 9 12 15 18 9"></polyline>
                                         </svg>
                                     </button>
