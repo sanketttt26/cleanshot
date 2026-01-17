@@ -644,8 +644,8 @@ class AnnotationManager {
       canvas.addEventListener('mouseleave', (e) => this.handleMouseUp(e));
     }
     
-    // Initialize history with empty state
-    this.saveHistory();
+    // Don't initialize history yet - wait until first action is performed
+    // This ensures undo button is disabled until there's something to undo
     this.updateUndoRedoButtons();
   }
   
@@ -726,9 +726,6 @@ class AnnotationManager {
     const dy = Math.abs(coords.y - start.y);
     
     if (dx > 5 || dy > 5) {
-      // Save history before adding annotation
-      this.saveHistory();
-      
       // Add final annotation
       const annotation = {
         type: state.annotations.activeTool,
@@ -739,7 +736,12 @@ class AnnotationManager {
         color: state.annotations.color
       };
       
+      // Save history BEFORE adding annotation (to enable undo)
+      this.saveHistory();
+      
+      // Add annotation to items
       state.annotations.items.push(annotation);
+      
       // Clear redo stack when a new action is performed
       redoStack = [];
       this.updateUndoRedoButtons();
@@ -767,15 +769,14 @@ class AnnotationManager {
   }
   
   undo() {
-    if (undoStack.length <= 1) return; // Can't undo if we're at the initial state
+    if (undoStack.length === 0) return; // Can't undo if stack is empty
     
     // Save current state to redo stack
     const current = JSON.parse(JSON.stringify(state.annotations.items));
     redoStack.push(current);
     
-    // Restore previous state
-    undoStack.pop(); // Remove current state
-    const previous = undoStack[undoStack.length - 1];
+    // Restore previous state from undo stack
+    const previous = undoStack.pop();
     state.annotations.items = JSON.parse(JSON.stringify(previous));
     
     this.updateUndoRedoButtons();
@@ -802,10 +803,13 @@ class AnnotationManager {
     const redoBtn = document.getElementById('redo-btn');
     
     if (undoBtn) {
-      undoBtn.disabled = undoStack.length <= 1;
+      // Disable undo button when undo stack is empty (no more states to undo to)
+      // Initially, undo stack is empty until first action is performed
+      undoBtn.disabled = undoStack.length === 0;
     }
     
     if (redoBtn) {
+      // Disable redo button when redo stack is empty (no more states to redo)
       redoBtn.disabled = redoStack.length === 0;
     }
   }
