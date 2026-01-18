@@ -11,9 +11,11 @@
     --text-primary: #ffffff;
     --text-secondary: #a0a0a0;
     --text-muted: #606060;
-    --accent: #ffffff;
-    --border: rgba(255, 255, 255, 0.08);
-    --border-light: rgba(255, 255, 255, 0.15);
+    --accent: #497DF9;
+    --accent-dark: #396FFD;
+    --accent-gradient: linear-gradient(135deg, #497DF9, #396FFD);
+    --border: rgba(73, 125, 249, 0.2);
+    --border-light: rgba(73, 125, 249, 0.35);
     --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     --font-display: 'Inter', sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -128,13 +130,14 @@ body {
 
 .tool-btn:hover:not(:disabled) {
     background: var(--bg-hover);
-    color: var(--text-primary);
+    color: var(--accent);
+    border-color: var(--border-light);
 }
 
 .tool-btn.active {
-    background: var(--text-primary);
-    border-color: var(--text-primary);
-    color: var(--bg-primary);
+    background: var(--accent-gradient);
+    border-color: var(--accent);
+    color: #ffffff;
 }
 
 .tool-btn:disabled {
@@ -256,13 +259,14 @@ body {
 
 .bg-type-btn:hover {
     background: var(--bg-hover);
-    color: var(--text-primary);
+    color: var(--accent);
+    border-color: var(--border-light);
 }
 
 .bg-type-btn.active {
-    background: var(--text-primary);
-    border-color: var(--text-primary);
-    color: var(--bg-primary);
+    background: var(--accent-gradient);
+    border-color: var(--accent);
+    color: #ffffff;
 }
 
 /* Preset Grid */
@@ -285,8 +289,8 @@ body {
 }
 
 .preset-btn.active {
-    border-color: var(--text-primary);
-    box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--text-primary);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--accent);
 }
 
 /* Color Picker */
@@ -326,7 +330,7 @@ body {
 
 .hex-input:focus {
     outline: none;
-    border-color: var(--text-primary);
+    border-color: var(--accent);
 }
 
 /* Upload Area */
@@ -345,7 +349,7 @@ body {
 }
 
 .upload-area:hover {
-    border-color: var(--text-primary);
+    border-color: var(--accent);
 }
 
 /* Slider */
@@ -363,9 +367,11 @@ body {
     -webkit-appearance: none;
     width: 16px;
     height: 16px;
-    background: var(--text-primary);
+    background: var(--accent-gradient);
     border-radius: 50%;
     cursor: pointer;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 6px rgba(73, 125, 249, 0.4);
 }
 
 /* Toggle */
@@ -405,12 +411,13 @@ body {
 }
 
 .toggle input:checked+.toggle-slider {
-    background: var(--text-primary);
+    background: var(--accent-gradient);
+    border-color: var(--accent);
 }
 
 .toggle input:checked+.toggle-slider::before {
     transform: translateX(18px);
-    background: var(--bg-primary);
+    background: #ffffff;
 }
 
 /* Social Presets */
@@ -435,6 +442,8 @@ body {
 
 .social-btn:hover {
     background: var(--bg-hover);
+    border-color: var(--border-light);
+    color: var(--accent);
 }
 
 /* Export Panel */
@@ -464,11 +473,13 @@ body {
 
 .format-btn:hover {
     background: var(--bg-hover);
+    color: var(--accent);
+    border-color: var(--border-light);
 }
 
 .format-btn.active {
-    background: var(--text-primary);
-    color: var(--bg-primary);
+    background: var(--accent-gradient);
+    color: #ffffff;
 }
 
 .export-buttons {
@@ -495,17 +506,20 @@ body {
 
 .export-btn.secondary:hover {
     background: var(--bg-hover);
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 .export-btn.primary {
-    background: var(--text-primary);
+    background: var(--accent-gradient);
     border: none;
-    color: var(--bg-primary);
+    color: #ffffff;
 }
 
 .export-btn.primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 20px rgba(73, 125, 249, 0.4);
+    opacity: 0.9;
 }
 
 /* Preview Area */
@@ -517,7 +531,7 @@ body {
     padding: 40px;
     background: var(--bg-primary);
     background-image:
-        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+        radial-gradient(circle at 1px 1px, rgba(73, 125, 249, 0.08) 1px, transparent 0);
     background-size: 20px 20px;
 }
 
@@ -578,8 +592,8 @@ body {
     position: fixed;
     bottom: 24px;
     right: 24px;
-    background: var(--text-primary);
-    color: var(--bg-primary);
+    background: var(--accent-gradient);
+    color: #ffffff;
     padding: 14px 24px;
     border-radius: 10px;
     font-size: 14px;
@@ -657,8 +671,8 @@ body {
 }
 
 .gradient-handle.active {
-    border-color: var(--text-primary);
-    box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--text-primary);
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--accent);
     z-index: 20;
 }
 
@@ -706,7 +720,7 @@ body {
 .number-input:focus,
 .select-input:focus {
     outline: none;
-    border-color: var(--text-primary);
+    border-color: var(--accent);
 }
 
 /* Hide default number input spinners */
@@ -801,7 +815,8 @@ body {
 
 .action-btn:hover {
     background: var(--bg-hover);
-    color: var(--text-primary);
+    color: var(--accent);
+    border-color: var(--border-light);
 }
 
 .action-btn:disabled {

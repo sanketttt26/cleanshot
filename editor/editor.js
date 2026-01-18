@@ -9,7 +9,7 @@ let state = {
   cropBounds: null,
   settings: {
     bgType: 'gradient',
-    gradient: 'purple-blue', // or 'custom'
+    gradient: 'logo', // or 'custom'
     solidColor: '#1a1a2e',
     bgImage: null,
     padding: 60,
@@ -21,8 +21,8 @@ let state = {
       type: 'linear',
       angle: 135,
       stops: [
-        { offset: 0, color: '#667eea' },
-        { offset: 1, color: '#764ba2' }
+        { offset: 0, color: '#497DF9' },
+        { offset: 1, color: '#396FFD' }
       ]
     }
   },
@@ -38,6 +38,7 @@ let state = {
 
 // Gradient definitions - Colorful
 const GRADIENTS = {
+  'logo': ['#497DF9', '#396FFD'],
   'purple-blue': ['#667eea', '#764ba2'],
   'teal-green': ['#11998e', '#38ef7d'],
   'orange-pink': ['#f093fb', '#f5576c'],

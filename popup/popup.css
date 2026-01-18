@@ -14,11 +14,13 @@
   --text-primary: #ffffff;
   --text-secondary: #a0a0a0;
   --text-muted: #606060;
-  --accent: #ffffff;
-  --accent-hover: #e0e0e0;
-  --accent-glow: rgba(255, 255, 255, 0.15);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-light: rgba(255, 255, 255, 0.15);
+  --accent: #497DF9;
+  --accent-dark: #396FFD;
+  --accent-gradient: linear-gradient(135deg, #497DF9, #396FFD);
+  --accent-hover: #5a8dfa;
+  --accent-glow: rgba(73, 125, 249, 0.3);
+  --border: rgba(73, 125, 249, 0.2);
+  --border-light: rgba(73, 125, 249, 0.35);
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.8);
   --gradient-primary: linear-gradient(135deg, #2a2a2a 0%, #0a0a0a 100%);
@@ -39,11 +41,13 @@
   --text-primary: #000000;
   --text-secondary: #505050;
   --text-muted: #909090;
-  --accent: #000000;
-  --accent-hover: #202020;
-  --accent-glow: rgba(0, 0, 0, 0.1);
-  --border: rgba(0, 0, 0, 0.08);
-  --border-light: rgba(0, 0, 0, 0.15);
+  --accent: #497DF9;
+  --accent-dark: #396FFD;
+  --accent-gradient: linear-gradient(135deg, #497DF9, #396FFD);
+  --accent-hover: #5a8dfa;
+  --accent-glow: rgba(73, 125, 249, 0.25);
+  --border: rgba(73, 125, 249, 0.15);
+  --border-light: rgba(73, 125, 249, 0.25);
   --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.15);
   --gradient-primary: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
@@ -146,8 +150,8 @@ body {
 
 .icon-btn:hover {
   background: var(--bg-hover);
-  border-color: var(--border-light);
-  color: var(--text-primary);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* Theme toggle icons */
@@ -197,23 +201,24 @@ body {
 
 .capture-btn:hover {
   background: var(--bg-hover);
-  border-color: var(--border-light);
+  border-color: var(--accent);
   transform: translateY(-2px);
 }
 
 .capture-btn.primary {
-  background: var(--text-primary);
+  background: var(--accent-gradient);
   border-color: transparent;
-  color: var(--bg-primary);
+  color: #ffffff;
 }
 
 .capture-btn.primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 20px var(--accent-glow);
+  opacity: 0.9;
 }
 
 .capture-btn.primary .btn-icon {
-  color: var(--bg-primary);
+  color: #ffffff;
 }
 
 .btn-icon {
@@ -349,13 +354,14 @@ body {
 
 .bg-type-btn:hover {
   background: var(--bg-hover);
-  color: var(--text-primary);
+  color: var(--accent);
+  border-color: var(--border-light);
 }
 
 .bg-type-btn.active {
-  background: var(--text-primary);
-  border-color: var(--text-primary);
-  color: var(--bg-primary);
+  background: var(--accent-gradient);
+  border-color: var(--accent);
+  color: #ffffff;
 }
 
 /* Preset Grid */
@@ -378,8 +384,8 @@ body {
 }
 
 .preset-btn.active {
-  border-color: var(--text-primary);
-  box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--text-primary);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--accent);
 }
 
 /* Color Picker */
@@ -419,7 +425,7 @@ body {
 
 .hex-input:focus {
   outline: none;
-  border-color: var(--text-primary);
+  border-color: var(--accent);
 }
 
 /* Upload Area */
@@ -439,7 +445,7 @@ body {
 }
 
 .upload-area:hover {
-  border-color: var(--text-primary);
+  border-color: var(--accent);
   background: var(--bg-hover);
 }
 
@@ -474,10 +480,12 @@ body {
   appearance: none;
   width: 16px;
   height: 16px;
-  background: var(--text-primary);
+  background: var(--accent-gradient);
   border-radius: 50%;
   cursor: pointer;
   transition: transform 0.2s ease;
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 6px rgba(73, 125, 249, 0.4);
 }
 
 .slider::-webkit-slider-thumb:hover {
@@ -524,13 +532,13 @@ body {
 }
 
 .toggle input:checked+.toggle-slider {
-  background: var(--text-primary);
-  border-color: var(--text-primary);
+  background: var(--accent-gradient);
+  border-color: var(--accent);
 }
 
 .toggle input:checked+.toggle-slider::before {
   transform: translateX(20px);
-  background: var(--bg-primary);
+  background: #ffffff;
 }
 
 /* Alignment Buttons */
@@ -555,12 +563,14 @@ body {
 
 .align-btn:hover {
   background: var(--bg-hover);
+  color: var(--accent);
+  border-color: var(--border-light);
 }
 
 .align-btn.active {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border-color: var(--text-primary);
+  background: var(--accent-gradient);
+  color: #ffffff;
+  border-color: var(--accent);
 }
 
 /* Social Presets */
@@ -589,7 +599,8 @@ body {
 
 .social-btn:hover {
   background: var(--bg-hover);
-  border-color: var(--border-light);
+  border-color: var(--accent);
+  color: var(--accent);
   transform: translateY(-1px);
 }
 
@@ -639,12 +650,14 @@ body {
 
 .format-btn:hover {
   background: var(--bg-hover);
+  color: var(--accent);
+  border-color: var(--border-light);
 }
 
 .format-btn.active {
-  background: var(--text-primary);
-  color: var(--bg-primary);
-  border-color: var(--text-primary);
+  background: var(--accent-gradient);
+  color: #ffffff;
+  border-color: var(--accent);
 }
 
 .export-buttons {
@@ -676,18 +689,20 @@ body {
 
 .export-btn.secondary:hover {
   background: var(--bg-hover);
-  border-color: var(--border-light);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .export-btn.primary {
-  background: var(--text-primary);
+  background: var(--accent-gradient);
   border: none;
-  color: var(--bg-primary);
+  color: #ffffff;
 }
 
 .export-btn.primary:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 20px var(--accent-glow);
+  opacity: 0.9;
 }
 
 .export-btn:disabled {
@@ -724,8 +739,8 @@ body {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--text-primary);
-  color: var(--bg-primary);
+  background: var(--accent-gradient);
+  color: #ffffff;
   padding: 12px 24px;
   border-radius: 8px;
   font-family: var(--font-display);
