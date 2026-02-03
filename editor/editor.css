@@ -279,7 +279,7 @@ body {
 .preset-btn {
     aspect-ratio: 1;
     border-radius: 8px;
-    border: 2px solid transparent;
+    /* border: 2px solid transparent; */
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -792,6 +792,7 @@ body {
     min-width: 0;
     overflow: hidden;
 }
+
 /* Undo/Redo Buttons */
 .tool-divider {
     width: 1px;

@@ -9,7 +9,7 @@ let state = {
   cropBounds: null,
   settings: {
     bgType: 'gradient',
-    gradient: 'logo', // or 'custom'
+    gradient: 'sunset', // or 'custom'
     solidColor: '#1a1a2e',
     bgImage: null,
     padding: 60,
@@ -21,8 +21,11 @@ let state = {
       type: 'linear',
       angle: 135,
       stops: [
-        { offset: 0, color: '#497DF9' },
-        { offset: 1, color: '#396FFD' }
+        { offset: 0, color: '#fff3d9' },
+        { offset: 0.25, color: '#ff9b8a' },
+        { offset: 0.5, color: '#ff5f61' },
+        { offset: 0.75, color: '#d6303e' },
+        { offset: 1, color: '#b51024' }
       ]
     }
   },
@@ -36,17 +39,64 @@ let state = {
   }
 };
 
-// Gradient definitions - Colorful
+// Gradient definitions - Vibrant multi-stop gradients
 const GRADIENTS = {
-  'logo': ['#497DF9', '#396FFD'],
-  'purple-blue': ['#667eea', '#764ba2'],
-  'teal-green': ['#11998e', '#38ef7d'],
-  'orange-pink': ['#f093fb', '#f5576c'],
-  'blue-cyan': ['#4facfe', '#00f2fe'],
-  'sunset': ['#fa709a', '#fee140'],
-  'dark': ['#0f0f0f', '#434343'],
-  'ocean': ['#2193b0', '#6dd5ed'],
-  'royal': ['#141e30', '#243b55']
+  'sunset': [
+    { offset: 0, color: '#fff3d9' },
+    { offset: 0.25, color: '#ff9b8a' },
+    { offset: 0.5, color: '#ff5f61' },
+    { offset: 0.75, color: '#d6303e' },
+    { offset: 1, color: '#b51024' }
+  ],
+  'ocean': [
+    { offset: 0, color: '#a0806d' },
+    { offset: 0.25, color: '#6a9e8e' },
+    { offset: 0.5, color: '#3a8a9a' },
+    { offset: 0.75, color: '#0a5a75' },
+    { offset: 1, color: '#001530' }
+  ],
+  'midnight': [
+    { offset: 0, color: '#0a0a2e' },
+    { offset: 0.25, color: '#2d5a6b' },
+    { offset: 0.5, color: '#d4b85f' },
+    { offset: 0.75, color: '#e08a2f' },
+    { offset: 1, color: '#3d1600' }
+  ],
+  'fire': [
+    { offset: 0, color: '#2d0a1a' },
+    { offset: 0.25, color: '#8c280f' },
+    { offset: 0.5, color: '#ff7a1a' },
+    { offset: 0.75, color: '#ffd84a' },
+    { offset: 1, color: '#ffff8a' }
+  ],
+  'purple': [
+    { offset: 0, color: '#4f46b5' },
+    { offset: 0.25, color: '#9b4db8' },
+    { offset: 0.5, color: '#d45cb0' },
+    { offset: 0.75, color: '#e8839e' },
+    { offset: 1, color: '#f2b28b' }
+  ],
+  'tropical': [
+    { offset: 0, color: '#0b9fe0' },
+    { offset: 0.25, color: '#0fc4cb' },
+    { offset: 0.5, color: '#1dd4b8' },
+    { offset: 0.75, color: '#26e5a5' },
+    { offset: 1, color: '#2ef092' }
+  ],
+  'sky': [
+    { offset: 0, color: '#7ab8e8' },
+    { offset: 0.25, color: '#94d4ff' },
+    { offset: 0.5, color: '#a8dcff' },
+    { offset: 0.75, color: '#bcd8ff' },
+    { offset: 1, color: '#d0d4ff' }
+  ],
+  'cream': [
+    { offset: 0, color: '#e8e8d0' },
+    { offset: 0.25, color: '#fefed4' },
+    { offset: 0.5, color: '#ffffdc' },
+    { offset: 0.75, color: '#fffde0' },
+    { offset: 1, color: '#f0eee8' }
+  ]
 };
 
 // DOM Elements
@@ -325,7 +375,7 @@ async function renderPreview() {
     if (state.settings.gradient === 'custom') {
       gradientColors = state.settings.customGradient.stops;
     } else {
-      gradientColors = GRADIENTS[state.settings.gradient] || GRADIENTS['purple-blue'];
+      gradientColors = GRADIENTS[state.settings.gradient] || GRADIENTS['sunset'];
     }
 
     const result = await CanvasRenderer.render(canvas, state.screenshot, {
