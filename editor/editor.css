@@ -279,13 +279,13 @@ body {
 .preset-btn {
     aspect-ratio: 1;
     border-radius: 8px;
-    /* border: 2px solid transparent; */
+    border: none;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .preset-btn:hover {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
 .preset-btn.active {
